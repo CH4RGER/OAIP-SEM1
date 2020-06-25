@@ -1,0 +1,262 @@
+#include <conio.h> 
+#include <stdio.h> 
+#include <iostream> 
+#include <string> 
+using namespace std; 
+
+bool is_sign(string); 
+bool is_dot(string); 
+bool is_num(string); 
+
+int main() 
+{ 
+int i = 0; 
+string s1, s2 = ""; 
+cout Ђ "Enter string\n"; 
+cin ї s1; 
+s2 = s1; 
+while (s1[i] != '\0') { 
+if (!is_num(s1.substr(i, 1))) 
+s2[i] = ' '; 
+if (is_sign(s1.substr(i, 1)) && is_num(s1.substr(i + 1, 1))) 
+s2[i] = s1[i]; 
+if (is_num(s1.substr(i, 1))) 
+s2[i] = s1[i]; 
+if (is_dot(s1.substr(i, 1)) && is_num(s1.substr(i + 1, 1)) && is_num(s1.substr(i - 1, 1))) 
+s2[i] = s1[i]; 
+if (is_num(s1.substr(i, 1)) && is_dot(s1.substr(i + 1, 1)) && !is_num2(s1.substr(i + 2, 1)))
+					s2[i] = ' ';/
+i++; 
+} 
+s2[i] = '\0'; 
+cout Ђ "Result:\n" Ђ s2; 
+
+
+} 
+
+bool is_num(string a) { 
+bool res = false; 
+if (a[0] >= '0' && a[0] <= '9') 
+res = true; 
+return res; 
+} 
+
+bool is_sign(string a) { 
+bool res = false; 
+if (a[0] == '+' || a[0] == '-') 
+res = true; 
+return res; 
+} 
+bool is_dot(string a) { 
+bool res = false; 
+if (a[0] == '.') 
+res = true; 
+return res; 
+}
+ 
+
+/
+/
+/
+/
+/
+/
+/
+#include <iostream>
+#include <string.h>
+#include <stdio.h>
+#include <conio.h>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	int n, i, j, len, a,b,ch;
+	char num[10] = { '0','1','2','3','4','5','6','7','8','9' };
+	string st;
+	puts(" Input string ");
+	getline(cin, st);
+	len = st.size();
+	if (st[0] != ' ')  // если 0 элемент массива не €вл€етс€ пробелом
+	{
+		a = 0;
+		for (a; a <= len; a++)
+		{
+			n = 0;
+			for (j = 0; j < 11; j++) //просмотр массива на наличие чисел
+			{
+				if (st[a] == num[j]) { n++; }
+			}
+			if (n > 0)
+			{
+				ch = a;
+				b = 0;
+				for (ch; ch >= 0; ch--) //удаление повтор€ющихс€ -
+				{
+					if (st[ch] == '-') { b++; }
+					else break; //если не -, то сразу идЄт к сout
+				}
+				if (b == 0 || b == 1)
+				{
+					cout << st[a];
+				}
+			}
+			else cout << " ";
+			if (st[a] == ' ')  //если пробел, то прерывает цикл                                                                                                                                  
+			{
+				cout << " ";
+				break;
+			}
+		}
+	}
+	for (i = 0; i <= len; i++)
+	{
+		if (st[i] == ' ')
+		{
+			a = i + 1;
+			for (a; a <= len; a++)
+			{
+				n = 0;
+				for (j = 0; j <= 11; j++) //просмотр массива на наличие чисел
+				{
+					if (st[a] == num[j]) { n++; }
+				}
+				if (n > 0)
+				{
+					if (n > 0)
+					{
+						ch = a;
+						for (ch; ch >= i; ch--)
+						{
+							if (st[ch] == '-') { b++; }
+							else break;
+						}
+						if (b == 0 || b == 1)
+						{
+							cout << st[a];
+						}
+						b = 0;
+					}
+
+				}
+				else cout << " ";
+				if (st[a] == ' ')
+				{
+					cout << " ";
+					break;
+				}
+			}
+		}
+	}
+	system("pause");
+	return 0;
+}
+/
+/
+/
+/
+/
+/
+/
+/
+/
+#include <iostream>
+#include <string.h>
+#include <stdio.h>
+#include <conio.h>
+
+using namespace std;
+
+int main()
+{
+	int n, i, j, len, a,b=0,ch;
+	char st[100], num[11] = { '0','1','2','3','4','5','6','7','8','9','-' };
+	puts(" Input string ");
+	gets_s(st);
+	len = strlen(st); /**/                                                                                                                                          
+	if (st[0] != ' ')  // если 0 элемент массива не €вл€етс€ пробелом
+	{          
+		a = 0;
+		for (a; a <= len; a++)        
+		{    
+			n = 0;
+			for (j = 0; j < 11; j++) //просмотр массива на наличие чисел
+			{
+				if (st[a] == num[j]) { n++; }
+			}
+			if (n > 0)            
+			{               
+				ch = a;                                                  
+				for (ch; ch >= 0; ch--) //удаление повтор€ющихс€ -
+				{   
+					if (st[ch] == '-') { b++; }
+					else break; //если не -, то сразу идЄт к сout
+				}       
+				if (b==0 || b==1) 
+				{
+                    cout << st[a];
+				}
+				b = 0;
+			} 
+			else cout << " ";
+			if (st[a] == ' ')  //если пробел, то прерывает цикл                                                                                                                                  
+			{                                                                                                                                                                                       
+				cout << " ";
+				break;
+			}
+		}
+	}
+	for (i = 0; i <= len; i++)
+	{
+		if (st[i] == ' ')
+		{
+			a = i + 1;
+			for (a; a <= len; a++)
+			{
+				n = 0;
+				for (j = 0; j <= 11; j++) //просмотр массива на наличие чисел
+				{
+					if (st[a] == num[j]) { n++; }
+				}
+				if (n > 0)
+				{
+					if (n > 0)
+					{
+						ch = a;
+						for (ch; ch >= i; ch--)
+						{
+							if (st[ch] == '-') { b++; }
+							else break;
+						}
+						if (b == 0 || b == 1)
+						{
+							cout << st[a];
+						}
+						b = 0;
+					}
+
+				}
+				else cout << " ";
+				if (st[a] == ' ')
+				{
+					cout << " ";
+					break; 
+				}
+			}
+		}
+	} /**/
+	/*for (i = 0; i <= len; i++)
+	{
+		n = 0;
+		for (j = 0; j <= 9; j++)
+		{
+			if (st[i] == num[j]) { n++; } \\это ранние наработки - не смотреть сюда!!
+		}
+		if (n > 0) { cout << st[i]; }
+		else cout << " ";
+	}*/
+	cout << endl;
+	system("pause");
+	return 0;
+}

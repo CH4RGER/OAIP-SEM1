@@ -1,0 +1,29 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	string s;
+	getline(cin, s);
+	int count = 0;
+	int p = s.length(), i = 0;
+	while (i < p)
+	{
+		if (s[i] != ' ' && (s[i + 1] == ' ' || s[i + 1] == '\0'))
+			count++;
+		i++;
+	}
+	cout << endl << "ammount of words " << count << "\n";
+
+	size_t b1 = s.find(' ');
+	size_t b2 = s.rfind(' ');
+
+	string w1 = s.substr(0, b1);
+	string w2 = s.substr(b2 + 1);
+
+	s.replace(b2 + 1, s.length() - b2, w1);
+	s.replace(0, b1, w2);
+
+	cout << s << endl;
+}

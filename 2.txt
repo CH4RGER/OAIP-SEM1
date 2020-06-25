@@ -1,0 +1,20 @@
+#include<iostream>
+#include<map>
+#include<cmath>
+using namespace std;
+
+int main()
+{
+	int n, m;
+	do {
+		cout << "enter N, M\n\n";
+		cin >> n >> m;
+	} while ((n <= 9) || (m <= 9));
+	
+	for (int x = 1; x <= n; x++) {
+		for (int y = 1; y <= m; y++) {
+			if ((pow(sin(x), 2) + pow(sin(y), 2) > 0.9) && x <= n && y <= m)
+				cout << "x=" << x << "\t" << "y=" << y << "\n";
+		}
+	}	
+}
